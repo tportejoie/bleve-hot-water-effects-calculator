@@ -5,7 +5,7 @@ services:
       dockerfile: Dockerfile
       args:
         VITE_THERMO_PROVIDER: api
-        VITE_THERMO_API_BASE_URL: http://thermo-api:8000
+        VITE_THERMO_API_BASE_URL: /api
     ports:
       - "8080:80"
     restart: unless-stopped

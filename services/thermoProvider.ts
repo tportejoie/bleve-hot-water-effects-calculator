@@ -12,7 +12,7 @@ export function getThermoProvider(): ThermoProvider {
   const providerKind = resolveThermoProviderKind();
 
   if (providerKind === 'api') {
-    const baseUrl = import.meta.env.VITE_THERMO_API_BASE_URL ?? 'http://localhost:8000';
+    const baseUrl = import.meta.env.VITE_THERMO_API_BASE_URL ?? '/api';
     return createApiThermoProvider(baseUrl);
   }
 

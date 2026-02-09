@@ -22,8 +22,9 @@ Quality checks:
 - `VITE_THERMO_PROVIDER=mock|api`
   - `mock` (default): built-in simplified steam table.
   - `api`: use the Thermo API backend (IAPWS-97 saturation properties).
-- `VITE_THERMO_API_BASE_URL=http://localhost:8000`
-  - Base URL of the Thermo API backend when `VITE_THERMO_PROVIDER=api`.
+- `VITE_THERMO_API_BASE_URL=/api`
+  - Recommended in production when Nginx proxies `/api` to `thermo-api`.
+  - For local no-proxy mode, you can still use `http://localhost:8000`.
 
 ## Thermo API (Precise Backend)
 
