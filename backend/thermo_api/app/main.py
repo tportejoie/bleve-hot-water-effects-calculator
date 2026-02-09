@@ -27,13 +27,11 @@ app.add_middleware(
 )
 
 
-@app.get("/healthz")
-def healthz() -> dict[str, str]:
+def _healthz() -> dict[str, str]:
     return {"status": "ok"}
 
 
-@app.get("/thermo/properties", response_model=ThermoPropertiesResponse)
-def thermo_properties(
+def _thermo_properties(
     pressure_pa: float = Query(..., alias="pressurePa", gt=0),
 ) -> ThermoPropertiesResponse:
     pressure_mpa = pressure_pa / 1_000_000.0
@@ -59,3 +57,17 @@ def thermo_properties(
         u_l=float(liquid.u * 1000.0),
         u_v=float(vapor.u * 1000.0),
     )
+
+
+@app.get("/healthz")
+@app.get("/api/healthz")
+def healthz() -> dict[str, str]:
+    return _healthz()
+
+
+@app.get("/thermo/properties", response_model=ThermoPropertiesResponse)
+@app.get("/api/thermo/properties", response_model=ThermoPropertiesResponse)
+def thermo_properties(
+    pressure_pa: float = Query(..., alias="pressurePa", gt=0),
+) -> ThermoPropertiesResponse:
+    return _thermo_properties(pressure_pa=pressure_pa)
