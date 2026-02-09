@@ -8,7 +8,7 @@ import Input from './components/Input';
 import Button from './components/Button';
 import ResultsCard from './components/ResultsCard';
 import OverpressureChart from './components/OverpressureChart';
-import { BleveIcon, GithubIcon, HelpCircleIcon, ZapIcon, Trash2Icon } from './components/Icons';
+import { GithubIcon, HelpCircleIcon, ZapIcon, Trash2Icon } from './components/Icons';
 
 
 const App: React.FC = () => {
@@ -68,9 +68,8 @@ const App: React.FC = () => {
     <div className="bg-gray-900 min-h-screen text-white font-sans">
       <header className="bg-gray-800 shadow-md">
         <nav className="container mx-auto px-6 py-3 flex justify-between items-center">
-          <div className="flex items-center">
-            <BleveIcon className="w-8 h-8 mr-3 text-gold-500" />
-            <h1 className="text-xl font-bold text-gold-500">BLEVE Calculator</h1>
+          <div className="w-full max-w-[360px] sm:max-w-[460px]">
+            <img src="/jamae-logo.png" alt="JAMAE Process Safety" className="h-12 sm:h-14 w-auto" />
           </div>
           <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors" title="View on GitHub">
             <GithubIcon className="w-6 h-6" />
