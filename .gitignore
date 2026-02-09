@@ -24,3 +24,5 @@ dist-ssr
 *.sw?
 ~BROMIUM/
 **/~BROMIUM/
+__pycache__/
+*.pyc
