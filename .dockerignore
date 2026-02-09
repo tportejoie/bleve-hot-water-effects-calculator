@@ -1,0 +1,10 @@
+node_modules
+npm-debug.log*
+dist
+dist-ssr
+.git
+.gitignore
+.vscode
+.idea
+~BROMIUM
+**/~BROMIUM/**

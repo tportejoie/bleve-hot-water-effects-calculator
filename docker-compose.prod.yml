@@ -1,0 +1,27 @@
+services:
+  thermo-api:
+    image: ${THERMO_API_IMAGE}
+    container_name: bleve-thermo-api
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://127.0.0.1:8000/healthz || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+  app:
+    image: ${APP_IMAGE}
+    container_name: bleve-web
+    restart: unless-stopped
+    depends_on:
+      thermo-api:
+        condition: service_healthy
+    ports:
+      - "8080:80"
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://127.0.0.1/healthz || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s

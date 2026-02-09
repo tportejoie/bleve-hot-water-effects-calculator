@@ -1,0 +1,5 @@
+{
+  "name": "BLEVE Hot Water Effects Calculator",
+  "description": "A web application to calculate the available energy and effect distances for a hot water BLEVE (Boiling Liquid Expanding Vapor Explosion) using the TNO Multi-Energy method (Index 10).",
+  "requestFramePermissions": []
+}
