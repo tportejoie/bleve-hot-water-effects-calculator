@@ -4,6 +4,9 @@ services:
       context: ./backend/thermo_api
       dockerfile: Dockerfile
     restart: unless-stopped
+    networks:
+      - default
+      - dokploy-network
     healthcheck:
       test: ["CMD-SHELL", "python -c \"import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/healthz')\" || exit 1"]
       interval: 30s
@@ -19,6 +22,9 @@ services:
         VITE_THERMO_PROVIDER: api
         VITE_THERMO_API_BASE_URL: /api
     restart: unless-stopped
+    networks:
+      - default
+      - dokploy-network
     depends_on:
       thermo-api:
         condition: service_healthy
@@ -30,3 +36,7 @@ services:
       timeout: 5s
       retries: 3
       start_period: 10s
+
+networks:
+  dokploy-network:
+    external: true
